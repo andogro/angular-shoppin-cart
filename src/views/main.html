@@ -5,8 +5,12 @@
               <option style="display:none" value="">Sort By Category</option>
               </select>
               <input type="text" id="search" placeholder="Search By Name" ng-model="search">
+              <select ng-model="price">
+                <option value="price">low to high</option>
+                <option value="-price">high to low</option>
+              </select>  
           </div>
-          <div class="row"  ng-repeat="tea in data | filter:search | filter:sortBy">
+          <div class="row"  ng-repeat="tea in data | filter:search | filter:sortBy | orderBy: price">
             <div class="col-md-3 image">
               <img src="{{ tea.imageUrl }}">
             </div>
@@ -25,7 +29,7 @@
             <div class="col-md-3">
               <form>
                 <select ng-model="quantity" ng-options="quant for quant in quantities">
-                <option style="display:none" value="1">Quantity</option>
+                <option style="display:none" value="">Quantity</option>
                 </select> <br><br>
                 <button type="submit" class="btn btn-primary" ng-click="bagIt(tea,quantity)">Bag It!</button>
               </form>
