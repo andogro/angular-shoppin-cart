@@ -1,0 +1,54 @@
+      <div ng-controller="teaController">
+        <div class = "container">
+          <div class="row">
+              <select ng-model="data.categories" ng-options="cats for cats in categories">
+              <option style="display:none" value="">Sort By Category</option>
+              </select>
+              <input type="Text" value="" >Search By Name
+          </div>
+          <div class="row"  ng-repeat="tea in data">
+            <div class="col-md-3 image">
+              <img src="{{ tea.imageUrl }}">
+            </div>
+            <div class="col-md-6">                
+                <h3>{{ tea.name }}</h3><br/>
+                <strong>Price:</strong> {{ tea.price * .01 | currency }} <br/>
+                <strong>Caffeine Scale:</strong> {{ tea.caffeineScale }}<br/>
+                <strong>Ingredients:</strong> {{ tea.ingredients }}<br/>
+                <strong>Rating:</strong> {{ tea.rating }}<br/>
+                <strong>In Stock?</strong> {{ tea.inStock === true ? "Yes": "No"}}<br/>
+                <strong>Categories</strong> <br/>
+                <ul>
+                <li ng-repeat="cats in tea.categories">{{cats}}</li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+              <form>
+                <select>
+                  <option value="0"> Select A Quantity</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select> <br><br>
+                <button type="submit" class="btn btn-primary">Bag It!</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+                
+                
+            
+
+    
+
+
+
+      </div>
