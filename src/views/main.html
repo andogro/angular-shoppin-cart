@@ -1,12 +1,12 @@
       <div ng-controller="teaController">
         <div class = "container">
           <div class="row">
-              <select ng-model="data.categories" ng-options="cats for cats in categories">
+              <select ng-model="sortBy" ng-options="cats for cats in categories">
               <option style="display:none" value="">Sort By Category</option>
               </select>
               <input type="text" id="search" placeholder="Search By Name" ng-model="search">
           </div>
-          <div class="row"  ng-repeat="tea in data | filter:search">
+          <div class="row"  ng-repeat="tea in data | filter:search | filter:sortBy">
             <div class="col-md-3 image">
               <img src="{{ tea.imageUrl }}">
             </div>
@@ -24,20 +24,10 @@
             </div>
             <div class="col-md-3">
               <form>
-                <select>
-                  <option value="0"> Select A Quantity</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
+                <select ng-model="quantity" ng-options="quant for quant in quantities">
+                <option style="display:none" value="1">Quantity</option>
                 </select> <br><br>
-                <button type="submit" class="btn btn-primary">Bag It!</button>
+                <button type="submit" class="btn btn-primary" ng-click="bagIt(tea,quantity)">Bag It!</button>
               </form>
             </div>
           </div>
