@@ -4,9 +4,9 @@
               <select ng-model="data.categories" ng-options="cats for cats in categories">
               <option style="display:none" value="">Sort By Category</option>
               </select>
-              <input type="Text" value="" >Search By Name
+              <input type="text" id="search" placeholder="Search By Name" ng-model="search">
           </div>
-          <div class="row"  ng-repeat="tea in data">
+          <div class="row"  ng-repeat="tea in data | filter:search">
             <div class="col-md-3 image">
               <img src="{{ tea.imageUrl }}">
             </div>
